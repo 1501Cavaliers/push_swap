@@ -6,19 +6,19 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:24:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/19 14:39:20 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:35:11 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
-struct t_list	*ft_lstnew_ps(int nb)
+t_a	*ft_lstnew_ps(int nb)
 {
-	struct t_list	*new;
+	t_a	*new;
 
 	new = NULL;
-	new = (struct t_list *)malloc(sizeof(t_list));
+	new = (t_a *)malloc(sizeof(t_a));
 	if (!new)
 		return (NULL);
 	new->nb = nb;
@@ -26,9 +26,9 @@ struct t_list	*ft_lstnew_ps(int nb)
 	return (new);
 }
 
-void	ft_lstadd_back_ps(struct t_list **lst, struct t_list *new)
+void	ft_lstadd_back_ps(t_a **lst, t_a *new)
 {
-	struct t_list	*temp;
+	t_a	*temp;
 
 	if (!lst)
 		return ;

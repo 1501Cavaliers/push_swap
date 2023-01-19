@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/19 14:38:21 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:29:36 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct t_list
 
 int				check_av(char *av);
 
-int				*atoi_av(char **av, int ac);
+int				*atoi_av(char **av, int len, int status);
 
 int				av_error(int *tab);
 
@@ -37,5 +37,7 @@ struct t_list	*split_list(int *tab);
 struct t_list	*ft_lstnew_ps(int nb);
 
 void			ft_lstadd_back_ps(struct t_list **lst, struct t_list *new);
+
+int				len_av(char *av);
 
 #endif

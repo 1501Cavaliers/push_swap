@@ -6,18 +6,34 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/19 15:58:09 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:35:35 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
-struct t_list	*split_list(int *tab)
+int	len_av(char *av)
 {
-	struct	t_list	*start;
-	struct	t_list	*next;
-	int				i;
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (av[i])
+	{
+		if (av[i] >= '0' && av[i] <= '9')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+t_a	*split_list(int *tab)
+{
+	t_a	*start;	
+	t_a	*next;	
+	int	i;
 
 	i = 0;
 	start = NULL;
@@ -53,7 +69,7 @@ int	av_error(int *tab)
 		i = 0;
 		temp = *tab;
 		i++;
-		while (tab[i])
+		while (tab[++i])
 		{
 			if (temp == tab[i])
 				return (ft_printf("Error : duplicate\n"));
@@ -64,19 +80,28 @@ int	av_error(int *tab)
 	return (1);
 }
 
-int	*atoi_av(char **av, int ac)
+int	*atoi_av(char **av, int len, int status)
 {
 	int	*tab;
 	int	i_tab;
 	int	i_av;
 
-	i_av = 1;
-	tab = malloc(sizeof(int) * (ac - 1));
+	if (status == 1)
+		i_av = 0;
+	else if (status == 2)
+	{
+		i_av = 1;
+		len -= 1;
+	}
+	tab = malloc(sizeof(int) * (len));
 	if (!tab)
 		return (0);
 	while (av[i_av])
 	{
-		i_tab = i_av - 1;
+		if (status == 1)
+			i_tab = i_av;
+		else
+			i_tab = i_av - 1;
 		tab[i_tab] = ft_atoi(av[i_av]);
 		i_av++;
 	}
@@ -90,7 +115,8 @@ int	check_av(char *av)
 	i = 0;
 	while (av[i])
 	{
-		if (av[i] == '-' || av[i] == '+' || (av[i] >= '0' && av[i] <= '9') || av[i] == ' ')
+		if (av[i] == '-' || av[i] == '+' || (av[i] >= '0' && av[i] <= '9')
+			|| av[i] == ' ')
 			i++;
 		else
 		{
