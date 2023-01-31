@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:24:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/19 17:35:11 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/01/31 18:30:09 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,34 @@ void	ft_lstadd_back_ps(t_a **lst, t_a *new)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+}
+
+t_a	*swap_list(t_a **first)
+{
+	t_a	*temp;
+	t_a	*second;
+
+	if (!first && !(*first)->next)
+		return (NULL);
+	second = (*first)->next;
+	temp = second->next;
+	second->next = *first;
+	(*first)->next = temp;
+	return (second);
+}
+
+t_a	*rotate_list(t_a **first)
+{
+	t_a	*tmp;
+	t_a *new;
+
+	if (!first || !(*first)->next)
+		return (NULL);
+	tmp = (*first)->next;
+	new = (*first)->next;
+	while (new->next)
+		new = new->next;
+	new->next = *first;
+	(*first)->next = NULL;
+	return(tmp);
 }

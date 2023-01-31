@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/19 17:34:45 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/01/31 18:22:59 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int ac, char **av)
 	int		*tab;
 
 	i = 1;
+	if (ac == 1)
+		return (ft_printf("Error, no arg\n"));
 	if (ac > 1)
 	{
 		while (av[i])
@@ -42,4 +44,11 @@ int	main(int ac, char **av)
 			return (0);
 	}
 	pile = split_list(tab);
+	pile = rotate_list(&pile);
+	while (pile->next)
+	{
+		ft_printf("%d\n", pile->nb);
+		pile = pile->next;
+	}
+	ft_printf("%d\n", pile->nb);
 }
