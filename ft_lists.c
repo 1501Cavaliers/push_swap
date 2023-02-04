@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:24:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/31 18:30:09 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/04 16:44:02 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,16 @@ t_a	*rotate_list(t_a **first)
 	new->next = *first;
 	(*first)->next = NULL;
 	return(tmp);
+}
+
+t_a	*push_list(t_a **start_a, t_a **start_b)
+{
+	t_a	*tmp;
+
+	if (!start_a || !start_b)
+		return (NULL);
+	tmp = *start_b;
+	*start_b = (*start_b)->next;
+	tmp->next = *start_a;
+	return (tmp);
 }
