@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =-Wall -Wextra -Werror
 
 LIBFT = libft.a
 
@@ -11,7 +11,9 @@ LIB = $(addprefix $(LIBFT_DIR)/, $(LIBFT))
 MY_SOURCES = main.c \
 	push_swap.c \
 	parsing.c \
-	ft_lists.c
+	ft_lists.c \
+	rank.c \
+	algo.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

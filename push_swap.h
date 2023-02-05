@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/04 16:14:19 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/05 16:29:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct t_list
 {
 	int				nb;
+	int				rank;
 	struct t_list	*next;
 }				t_a;
 
@@ -45,5 +46,15 @@ t_a			*swap_list(t_a **first);
 t_a			*rotate_list(t_a **first);
 
 t_a			*push_list(t_a **start_a, t_a **start_b);
+
+int			median(t_a **start);
+
+int			ft_lstsize_ps(t_a *lst);
+
+void		rank_0(t_a *tmp);
+
+void		find_rank(t_a *start);
+
+void		allow_rank(t_a *start, int nb, int rank);
 
 #endif

@@ -6,12 +6,25 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:24:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/04 16:44:02 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/05 14:34:10 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
+
+int	ft_lstsize_ps(t_a *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}
 
 t_a	*ft_lstnew_ps(int nb)
 {

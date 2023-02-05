@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/01/19 17:35:35 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/05 18:37:01 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	av_error(int *tab)
 	{
 		i = 0;
 		temp = *tab;
-		i++;
 		while (tab[++i])
 		{
 			if (temp == tab[i])
@@ -87,12 +86,12 @@ int	*atoi_av(char **av, int len, int status)
 	int	i_av;
 
 	if (status == 1)
-		i_av = 0;
-	else if (status == 2)
 	{
-		i_av = 1;
-		len -= 1;
+		i_av = 0;
+		len += 1;
 	}
+	else if (status == 2)
+		i_av = 1;
 	tab = malloc(sizeof(int) * (len));
 	if (!tab)
 		return (0);
