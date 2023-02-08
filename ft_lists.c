@@ -6,12 +6,30 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:24:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/05 14:34:10 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/08 17:05:23 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
+
+void	print_list(t_a	*lst)
+{
+	while (1 <= ft_lstsize_ps(lst))
+	{
+		ft_printf("nb : %d || rank : %d\n", lst->nb, lst->rank);
+		lst = lst->next;
+	}
+}
+
+t_a	*ft_lstlast_ps(t_a *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
 
 int	ft_lstsize_ps(t_a *lst)
 {
@@ -54,46 +72,4 @@ void	ft_lstadd_back_ps(t_a **lst, t_a *new)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
-}
-
-t_a	*swap_list(t_a **first)
-{
-	t_a	*temp;
-	t_a	*second;
-
-	if (!first && !(*first)->next)
-		return (NULL);
-	second = (*first)->next;
-	temp = second->next;
-	second->next = *first;
-	(*first)->next = temp;
-	return (second);
-}
-
-t_a	*rotate_list(t_a **first)
-{
-	t_a	*tmp;
-	t_a *new;
-
-	if (!first || !(*first)->next)
-		return (NULL);
-	tmp = (*first)->next;
-	new = (*first)->next;
-	while (new->next)
-		new = new->next;
-	new->next = *first;
-	(*first)->next = NULL;
-	return(tmp);
-}
-
-t_a	*push_list(t_a **start_a, t_a **start_b)
-{
-	t_a	*tmp;
-
-	if (!start_a || !start_b)
-		return (NULL);
-	tmp = *start_b;
-	*start_b = (*start_b)->next;
-	tmp->next = *start_a;
-	return (tmp);
 }

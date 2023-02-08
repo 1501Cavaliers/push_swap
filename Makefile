@@ -13,7 +13,9 @@ MY_SOURCES = main.c \
 	parsing.c \
 	ft_lists.c \
 	rank.c \
-	algo.c
+	algo.c \
+	instruction.c \
+	sa-pb.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

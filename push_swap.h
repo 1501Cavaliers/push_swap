@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/05 16:29:39 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/08 16:52:56 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_a			*swap_list(t_a **first);
 
 t_a			*rotate_list(t_a **first);
 
+t_a			*reverse_rotate(t_a	**start);
+
 t_a			*push_list(t_a **start_a, t_a **start_b);
 
 int			median(t_a **start);
@@ -56,5 +58,34 @@ void		rank_0(t_a *tmp);
 void		find_rank(t_a *start);
 
 void		allow_rank(t_a *start, int nb, int rank);
+
+void		hub_inst(char	*str);
+
+char		swap_a(t_a **pile);
+
+char		swap_b(t_a **pile);
+
+char		sa_sb(t_a **pile_a, t_a **pile_b);
+
+char		push_a(t_a **pile_a, t_a **pile_b);
+
+char		push_b(t_a **pile_b, t_a **pile_a);
+
+char		rotate_a(t_a **pile_a);
+
+char		rotate_b(t_a **pile_b);
+
+char		ra_rb(t_a **pile_a, t_a **pile_b);
+
+char		reverse_rotate_a(t_a **pile_a);
+
+char		reverse_rotate_b(t_a **pile_b);
+
+t_a			*ft_lstlast_ps(t_a *lst);
+
+void		print_list(t_a	*lst);
+
+
+
 
 #endif
