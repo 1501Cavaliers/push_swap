@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa-pb.c                                            :+:      :+:    :+:   */
+/*   all_instructions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:32:43 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/08 16:53:49 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/14 14:48:45 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	swap_a(t_a **pile)
 	second->next = *pile;
 	(*pile)->next = tmp;
 	*pile = second;
-	return ('1');
+	return ('0');
 }
 
 char	swap_b(t_a **pile)
@@ -40,14 +40,14 @@ char	swap_b(t_a **pile)
 	second->next = *pile;
 	(*pile)->next = tmp;
 	*pile = second;
-	return ('2');
+	return ('1');
 }
 
 char	sa_sb(t_a **pile_a, t_a **pile_b)
 {
 	swap_a(pile_a);
 	swap_b(pile_b);
-	return ('3');
+	return ('2');
 }
 
 char	push_a(t_a **pile_a, t_a **pile_b)
@@ -62,7 +62,7 @@ char	push_a(t_a **pile_a, t_a **pile_b)
 	first_b->next = *pile_a;
 	*pile_b = second_b;
 	*pile_a = first_b;
-	return ('4');
+	return ('3');
 }
 
 char	push_b(t_a **pile_b, t_a **pile_a)
@@ -77,7 +77,7 @@ char	push_b(t_a **pile_b, t_a **pile_a)
 	first_a->next = *pile_b;
 	*pile_a = second_a;
 	*pile_b = first_a;
-	return ('5');
+	return ('4');
 }
 
 char	rotate_a(t_a **pile_a)
@@ -96,7 +96,7 @@ char	rotate_a(t_a **pile_a)
 	last->next = first;
 	first->next = NULL;
 	*pile_a = second;
-	return ('6');
+	return ('5');
 }
 
 char	rotate_b(t_a **pile_b)
@@ -115,14 +115,14 @@ char	rotate_b(t_a **pile_b)
 	last->next = first;
 	first->next = NULL;
 	*pile_b = second;
-	return ('7');
+	return ('6');
 }
 
 char	ra_rb(t_a **pile_a, t_a **pile_b)
 {
 	rotate_a(pile_a);
 	rotate_b(pile_b);
-	return ('8');
+	return ('7');
 }
 
 char	reverse_rotate_a(t_a **pile_a)
@@ -139,7 +139,7 @@ char	reverse_rotate_a(t_a **pile_a)
 	b_last->next = NULL;
 	last->next = *pile_a;
 	*pile_a = last;
-	return ('9');
+	return ('8');
 }
 
 char	reverse_rotate_b(t_a **pile_b)
@@ -156,7 +156,7 @@ char	reverse_rotate_b(t_a **pile_b)
 	b_last->next = NULL;
 	last->next = *pile_b;
 	*pile_b = last;
-	return ('b');
+	return ('9');
 }
 
 char	rra_rrb(t_a **pile_a, t_a **pile_b)

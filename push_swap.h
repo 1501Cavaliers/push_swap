@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/08 16:52:56 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/14 17:51:24 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,12 @@ t_a			*ft_lstlast_ps(t_a *lst);
 
 void		print_list(t_a	*lst);
 
+void		scan_inst(char	*str);
 
+int			check_list(t_a *start);
 
+char		algo_3arg(t_a **start);
+
+t_a		*ft_newlst(int nb, int rank);	
 
 #endif
