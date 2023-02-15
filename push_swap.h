@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/14 17:51:24 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/15 14:31:30 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct t_list
 	int				nb;
 	int				rank;
 	struct t_list	*next;
+	struct t_list	*prev;
 }				t_a;
 
 int			check_av(char *av);
@@ -91,6 +92,14 @@ int			check_list(t_a *start);
 
 char		algo_3arg(t_a **start);
 
-t_a		*ft_newlst(int nb, int rank);	
+t_a			*ft_newlst(int nb, int rank);
+
+t_a			*ft_lstlast_ps(t_a *lst);
+
+int			reverse_check_list(t_a *start);
+
+char		reverse_algo_3arg(t_a **start);
+
+char		algo_5arg(t_a **pile_a, t_a **pile_b);
 
 #endif

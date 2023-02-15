@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:32:43 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/14 14:48:45 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:57:26 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	push_a(t_a **pile_a, t_a **pile_b)
 	t_a	*first_b;
 	t_a *second_b;
 	
-	if (!pile_b || !(*pile_b)->next)
+	if (!pile_b)
 		return (0);
 	first_b = *pile_b;
 	second_b = (*pile_b)->next;
@@ -70,7 +70,7 @@ char	push_b(t_a **pile_b, t_a **pile_a)
 	t_a	*first_a;
 	t_a *second_a;
 	
-	if (!pile_a || !(*pile_a)->next)
+	if (!pile_a)
 		return (0);
 	first_a = *pile_a;
 	second_a = (*pile_a)->next;
