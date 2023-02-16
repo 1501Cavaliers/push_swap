@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/15 14:31:30 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/02/16 15:57:01 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,11 @@ int			reverse_check_list(t_a *start);
 char		reverse_algo_3arg(t_a **start);
 
 char		algo_5arg(t_a **pile_a, t_a **pile_b);
+
+void		algo_3(t_a **pile, char *inst);
+
+void		algo_5(t_a **pile_a, t_a **pile_b, char *inst);
+
+void		add_prev_to_list(t_a **start);
 
 #endif
