@@ -5,84 +5,102 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/05 18:18:14 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/16 14:15:12 by fserpe           ###   ########.fr       */
+/*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
+/*   Updated: 2023/03/01 14:45:30 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
-char	algo_3arg(t_a **start)
+void	algo_3(t_a **pile, char *inst)
 {
 	t_a	*next;
-	t_a *last;
-	
-	if (!start || !(*start)->next)
-		return (0);
-	next = (*start)->next;
-	last = next->next;
-	if (last->rank == 2)
-		return (rotate_a(start));
-	else if ((*start)->rank == 2 && next->rank == 3)
-		return (reverse_rotate_a(start));
-	else if (((*start)->rank == 3 || (*start)->rank == 2) && (next->rank == 2 || next->rank == 1))
-		return (swap_a(start));
-	return (0);
+	t_a	*last;
+	int	i;
+
+	if (!pile || !(*pile)->next)
+		return ;
+	i = 0;
+	while (!check_list(*pile))
+	{
+		next = (*pile)->next;
+		last = next->next;
+		if (last->rank == 2)
+			inst[i++] = rotate_a(pile);
+		else if ((*pile)->rank == 2 && next->rank == 3)
+			inst[i++] = reverse_rotate_a(pile);
+		else if (((*pile)->rank == 3 || (*pile)->rank == 2)
+			&& (next->rank == 2 || next->rank == 1))
+			inst[i++] = swap_a(pile);
+	}
+	inst[i] = 0;
 }
 
-char	reverse_algo_3arg(t_a **start)
+char	*reverse_algo_3(t_a **pile)
 {
-	t_a	*next;
-	t_a *last;
-	
-	if (!start || !(*start)->next)
+	t_a		*next;
+	t_a		*last;
+	char	*str;
+	int		i;
+
+	if (!pile || !(*pile)->next)
 		return (0);
-	next = (*start)->next;
-	last = next->next;
-	if (last->rank == 2)
-		return (rotate_a(start));
-	else if ((*start)->rank == 2 && (next->rank == 3 || next->rank == 1))
-		return (swap_a(start));
-	else if ((*start)->rank == 1 && next->rank == 2)
-		return (reverse_rotate_a(start));
-	return (0);
+	str = malloc(sizeof(char) * 4);
+	i = 0;
+	while (!reverse_check_list(*pile))
+	{
+		next = (*pile)->next;
+		last = next->next;
+		if (last->rank == 2)
+			str[i++] = rotate_a(pile);
+		else if ((*pile)->rank == 1 && next->rank == 2)
+			str[i++] = swap_a(pile);
+		else if ((*pile)->rank == 2 && (next->rank == 3 || next->rank == 1))
+			str[i++] = reverse_rotate_a(pile);
+	}
+	str[i] = 0;
+	return (str);
 }
 
-char	algo_5arg(t_a **pile_a, t_a **pile_b)
+void	algo_5_bis(t_a **pile_a, t_a **pile_b, char *inst, int i)
 {
 	t_a	*tmp;
-	t_a *next;
+	t_a	*next;
 
-	if (!pile_a || !(*pile_a)->next)
-		return (0);
 	tmp = *pile_a;
-	next = (*pile_a)->next;
-	ft_printf("------A------\n");
-	print_list(*pile_a);
-	ft_printf("------B------\n");
-	print_list(*pile_b);
-	if (!check_list(*pile_a))
-	{
-		if (tmp->rank < 4 )
-			return (push_b(pile_b, pile_a));
-		else if (tmp->rank > 3 && ft_lstsize_ps(*pile_a) > 2)
-		{
-			if (next->rank < 4)
-				return (rotate_a(pile_a));
-			else
-				return (reverse_rotate_a(pile_a));
-		}
-	}
-	if (ft_lstsize_ps(*pile_b) == 3 && !reverse_check_list(*pile_b))
-		return (reverse_algo_3arg(pile_b));
+	next = tmp->next;
 	if (tmp->rank > next->rank)
-		return (swap_a(pile_a));
-	return (0);
+			inst[i++] = swap_a(pile_a);
+	ft_strjoin(inst, (const char *)reverse_algo_3(pile_b));
+	while (ft_lstsize_ps(*pile_b) > 0)
+		inst[i++] = push_a(pile_a, pile_b);
+	inst[i] = 0;
 }
 
-// char	algo
+void	algo_5(t_a **pile_a, t_a **pile_b, char *inst)
+{
+	t_a	*tmp;
+	t_a	*next;
+	int	i;
 
-// void	algo_100arg(t_a **start)
+	if (!pile_a || !(*pile_a)->next)
+		return ;
+	i = 0;
+	while (ft_lstsize_ps(*pile_b) < 3)
+	{
+		tmp = *pile_a;
+		next = tmp->next;
+		if (tmp->rank < 4)
+			inst[i++] = push_b(pile_b, pile_a);
+		else if (next->rank < 4)
+			inst[i++] = rotate_a(pile_a);
+		else if ((ft_lstlast_ps(*pile_a))->rank < 4)
+			inst[i++] = reverse_rotate_a(pile_a);
+	}
+}
 
-// void	algo_500arg(t_a **start)
+void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
+{
+
+}

@@ -6,14 +6,14 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:35:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/14 16:47:29 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/01 14:35:57 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
-int		print_inst(char	i)
+int	print_inst(char i)
 {
 	if (!i)
 		return (0);
@@ -42,8 +42,6 @@ int		print_inst(char	i)
 	return (1);
 }
 
-
-
 void	scan_inst(char	*str)
 {
 	int	i;
@@ -53,17 +51,20 @@ void	scan_inst(char	*str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] == '0' && str[i + 1] == '1') || (str[i] == '1' && str[i + 1] == '0'))
+		if ((str[i] == '0' && str[i + 1] == '1')
+			|| (str[i] == '1' && str[i + 1] == '0'))
 		{
 			print_inst('2');
 			i += 2;
 		}
-		else if ((str[i] == '5' && str[i + 1] == '6') || (str[i] == '6' && str[i + 1] == '5'))
+		else if ((str[i] == '5' && str[i + 1] == '6')
+			|| (str[i] == '6' && str[i + 1] == '5'))
 		{
 			print_inst('7');
 			i += 2;
 		}
-		else if ((str[i] == '8' && str[i + 1] == '9') || (str[i] == '9' && str[i + 1] == '8'))
+		else if ((str[i] == '8' && str[i + 1] == '9')
+			|| (str[i] == '9' && str[i + 1] == '8'))
 		{
 			print_inst('R');
 			i += 2;

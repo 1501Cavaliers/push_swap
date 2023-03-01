@@ -6,24 +6,58 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/16 15:59:36 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/01 14:34:18 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
+void	hub(t_a *pile_a)
+{
+	t_a		*pile_b;
+	t_a		*twin;
+	char	*inst;
+
+	pile_b = NULL;
+	twin = pile_a;
+	inst = ft_calloc(10, 1);
+	rank_0(pile_a);
+	find_rank(pile_a);
+	add_prev_to_list(&pile_a);
+	algo_5(&pile_a, &pile_b, inst);
+	scan_inst(inst);
+	print_list(pile_a);
+}
+
+int	sub_main(int ac, char **av)
+{
+	t_a	*pile_a;
+
+	pile_a = NULL;
+	if (ac > 2)
+	{
+		pile_a = atoi_to_list(av, 1);
+		if (av_error(pile_a) != 1)
+			return (0);
+	}
+	if (ac == 2)
+	{
+		pile_a = atoi_to_list(ft_split(av[1], ' '), 2);
+		if (av_error(pile_a) != 1)
+			return (0);
+	}
+	hub(pile_a);
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
-	t_a		*pile;
-	t_a		*pile_b = NULL;
-	t_a		*twin;
-	t_a		*tmp;
-	int 	i;
-	char	*inst;
-	int		*tab;
+	int	i;
+	t_a	*pile_a;
 
 	i = 1;
+	pile_a = NULL;
 	if (ac == 1)
 		return (ft_printf("Error, no arg\n"));
 	if (ac > 1)
@@ -35,37 +69,5 @@ int	main(int ac, char **av)
 			i++;
 		}
 	}
-	if (ac == 2)
-	{
-		tab = atoi_av(ft_split(av[1], ' '), len_av(av[1]), 1);
-		if (av_error(tab) != 1)
-			return (0);
-	}
-	if (ac > 2)
-	{
-		tab = atoi_av(av, ac, 2);
-		if (av_error(tab) != 1)
-			return (0);
-	}
-	inst = ft_calloc(10, 1);
-	pile = split_list(tab);
-	twin = pile;
-	rank_0(pile);
-	find_rank(pile);
-	add_prev_to_list(&pile);
-	tmp = pile->prev;
-	ft_printf("prev of pile_a : %d\n", tmp->nb);
-	pile = twin;
-	ft_printf("=======A========\n");
-	print_list(pile);
-	ft_printf("=======B========\n");
-	print_list(pile_b);
-	pile = twin;
-	algo_5(&pile, &pile_b, inst);
-	// ft_printf("here\n");
-	scan_inst(inst);
-	ft_printf("=======A========\n");
-	print_list(pile);
-	ft_printf("=======B========\n");
-	print_list(pile_b);
+	sub_main(ac, av);
 }

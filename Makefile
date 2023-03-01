@@ -13,11 +13,12 @@ MY_SOURCES = main.c \
 	parsing.c \
 	ft_lists.c \
 	rank.c \
-	algo.c \
 	instruction.c \
 	all_instructions.c \
+	all_instructions_bis.c \
+	last_instructiom.c \
 	utils_algo.c \
-	algobis.c \
+	algo.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/16 15:57:01 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/01 14:38:04 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,11 @@ typedef struct t_list
 
 int			check_av(char *av);
 
-int			*atoi_av(char **av, int len, int status);
-
-int			av_error(int *tab);
-
-t_a			*split_list(int *tab);
+int			av_error(t_a *lst);
 
 t_a			*ft_lstnew_ps(int nb);
 
 void		ft_lstadd_back_ps(struct t_list **lst, struct t_list *new);
-
-int			len_av(char *av);
 
 t_a			*swap_list(t_a **first);
 
@@ -106,6 +100,10 @@ void		algo_3(t_a **pile, char *inst);
 
 void		algo_5(t_a **pile_a, t_a **pile_b, char *inst);
 
+void		algo_100(t_a **pile_a, t_a **pile_b, char *inst)
+
 void		add_prev_to_list(t_a **start);
+
+t_a			*atoi_to_list(char **av, int status);
 
 #endif

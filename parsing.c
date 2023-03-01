@@ -6,105 +6,52 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/02/05 18:37:01 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/01 14:36:33 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
-int	len_av(char *av)
+int	av_error(t_a *lst)
 {
-	int	i;
-	int	count;
+	t_a	*temp;
 
-	i = 0;
-	count = 0;
-	while (av[i])
+	temp = lst;
+	while (ft_lstsize_ps(lst) >= 1)
 	{
-		if (av[i] >= '0' && av[i] <= '9')
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-t_a	*split_list(int *tab)
-{
-	t_a	*start;	
-	t_a	*next;	
-	int	i;
-
-	i = 0;
-	start = NULL;
-	next = NULL;
-	start = ft_lstnew_ps(tab[i]);
-	if (!start)
-		return (NULL);
-	while (tab[++i])
-	{
-		next = ft_lstnew_ps(tab[i]);
-		if (!next)
-			return (NULL);
-		ft_lstadd_back_ps(&start, next);
-	}
-	free(tab);
-	return (start);
-}
-
-int	av_error(int *tab)
-{
-	int	temp;
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		if (tab[i] < -2147483647 || tab[i] > 2147483646)
+		if (lst->nb < -2147483647 || lst->nb > 2147483646)
 			return (ft_printf("Error : int overload\n"));
-		i++;
+		lst = lst->next;
 	}
-	while (*tab)
+	lst = temp;
+	while (ft_lstsize_ps(lst) >= 1)
 	{
-		i = 0;
-		temp = *tab;
-		while (tab[++i])
+		temp = lst->next;
+		while (ft_lstsize_ps(temp) >= 1)
 		{
-			if (temp == tab[i])
+			if (temp->nb == lst->nb)
 				return (ft_printf("Error : duplicate\n"));
-			i++;
+			temp = temp->next;
 		}
-		tab++;
+		lst = lst->next;
 	}
 	return (1);
 }
 
-int	*atoi_av(char **av, int len, int status)
+t_a	*atoi_to_list(char **av, int status)
 {
-	int	*tab;
-	int	i_tab;
-	int	i_av;
+	t_a	*lst;
+	int	i;
 
 	if (status == 1)
-	{
-		i_av = 0;
-		len += 1;
-	}
-	else if (status == 2)
-		i_av = 1;
-	tab = malloc(sizeof(int) * (len));
-	if (!tab)
-		return (0);
-	while (av[i_av])
-	{
-		if (status == 1)
-			i_tab = i_av;
-		else
-			i_tab = i_av - 1;
-		tab[i_tab] = ft_atoi(av[i_av]);
-		i_av++;
-	}
-	return (tab);
+		i = 1;
+	else
+		i = 0;
+	lst = ft_lstnew_ps(ft_atoi(av[i]));
+	while (av[++i])
+		ft_lstadd_back_ps(&lst, ft_lstnew_ps(ft_atoi(av[i])));
+	return (lst);
 }
 
 int	check_av(char *av)
