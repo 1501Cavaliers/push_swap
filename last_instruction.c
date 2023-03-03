@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:30:10 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/01 14:37:14 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/03 14:45:00 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,13 @@ void	add_prev_to_list(t_a **start)
 		prev = prev->next;
 	}
 	tmp->prev = prev;
+	(*start)->prev = tmp;
+	// tmp->next = *start;
 }
+
+
+// 	/ \
+//   =/-+-\=
+//   /  O  \
+//   \__W__/
+//     | |

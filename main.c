@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/01 14:34:18 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/03 13:37:15 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	hub(t_a *pile_a)
 	inst = ft_calloc(10, 1);
 	rank_0(pile_a);
 	find_rank(pile_a);
+	pile_a = twin;
 	add_prev_to_list(&pile_a);
 	algo_5(&pile_a, &pile_b, inst);
 	scan_inst(inst);

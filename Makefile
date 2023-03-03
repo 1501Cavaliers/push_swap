@@ -16,7 +16,7 @@ MY_SOURCES = main.c \
 	instruction.c \
 	all_instructions.c \
 	all_instructions_bis.c \
-	last_instructiom.c \
+	last_instruction.c \
 	utils_algo.c \
 	algo.c \
 

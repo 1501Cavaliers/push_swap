@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/01 14:45:30 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/03 13:36:56 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,10 @@ void	algo_5(t_a **pile_a, t_a **pile_b, char *inst)
 		else if ((ft_lstlast_ps(*pile_a))->rank < 4)
 			inst[i++] = reverse_rotate_a(pile_a);
 	}
+	algo_5_bis(pile_a, pile_b, inst, i);
 }
 
-void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
-{
+// void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
+// {
 
-}
+// }
