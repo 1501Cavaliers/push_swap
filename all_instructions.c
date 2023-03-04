@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:32:43 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/03 13:52:56 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/04 16:06:06 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ char	swap_a(t_a **pile)
 	tmp = second->next;
 	second->next = *pile;
 	(*pile)->next = tmp;
+	// second->prev = ft_lstlast_ps(*pile);
+	// (*pile)->prev = NULL;
+	// tmp->prev = *pile;
 	*pile = second;
 	add_prev_to_list(pile);
 	return ('0');
@@ -41,7 +44,6 @@ char	swap_b(t_a **pile)
 	second->next = *pile;
 	(*pile)->next = tmp;
 	*pile = second;
-	add_prev_to_list(pile);
 	return ('1');
 }
 

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:30:10 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/03 14:45:00 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/04 15:05:45 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,31 @@ void	add_prev_to_list(t_a **start)
 		tmp->prev = prev;
 		prev = prev->next;
 	}
-	tmp->prev = prev;
 	(*start)->prev = tmp;
 	// tmp->next = *start;
+	tmp = *start;
+	tmp = tmp->next;
+	tmp->prev = NULL;
 }
 
+void	print_prev(t_a *pile)
+{
+	t_a	*tmp;
 
-// 	/ \
-//   =/-+-\=
-//   /  O  \
-//   \__W__/
-//     | |
+	tmp = pile;
+	ft_printf("nb : %d || rank : %d\n", pile->nb, pile->rank);
+	pile = pile->prev;
+	// ft_printf("nb : %d || rank : %d\n", pile->nb, pile->rank);
+	// return ;
+	while (pile->nb != tmp->nb)
+	{
+		ft_printf("nb : %d || rank : %d\n", pile->nb, pile->rank);
+		pile = pile->prev;
+	}
+} 
+
+//  	/ \
+//    =/-+-\=
+//    /  O  \
+//    \__W__/
+//      | |

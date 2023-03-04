@@ -6,12 +6,21 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/03 13:37:15 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/04 16:06:23 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
+
+void	test_inst(t_a *pile_a, t_a *pile_b)
+{
+	(void)pile_b;
+	ft_printf("%c\n", swap_a(&pile_a));
+	// ft_printf("%c\n", push_b(&pile_b, &pile_a));
+	// ft_printf("%c\n", rotate_a(&pile_a));
+	// ft_printf("%c\n", reverse_rotate_a(&pile_a));
+}
 
 void	hub(t_a *pile_a)
 {
@@ -24,11 +33,15 @@ void	hub(t_a *pile_a)
 	inst = ft_calloc(10, 1);
 	rank_0(pile_a);
 	find_rank(pile_a);
-	pile_a = twin;
+	// pile_a = twin;
 	add_prev_to_list(&pile_a);
-	algo_5(&pile_a, &pile_b, inst);
-	scan_inst(inst);
+	test_inst(pile_a, pile_b);
+	// pile_a = twin;
 	print_list(pile_a);
+	// print_prev(pile_a);
+	// pile_a = twin;
+	// algo_5(&pile_a, &pile_b, inst);
+	// scan_inst(inst);
 }
 
 int	sub_main(int ac, char **av)
