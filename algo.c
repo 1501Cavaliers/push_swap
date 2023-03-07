@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/03 13:36:56 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/07 17:14:44 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,26 @@ void	algo_5(t_a **pile_a, t_a **pile_b, char *inst)
 	algo_5_bis(pile_a, pile_b, inst, i);
 }
 
-// void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
-// {
+void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
+{
+	t_a	*tmp;
+	t_a	*next;
+	t_a	*prev;
+	int i;
 
-// }
+	if (!pile_a || (*pile_b)->next)
+		return ;
+	tmp = *pile_a;
+	next = tmp->next;
+	prev = tmp->prev;
+	i = 0;
+	if (tmp->rank <= 10)
+		inst[i++] = push_b(pile_b, pile_a);
+	else if (tmp->rank > 10)
+	{
+		if (next->rank <= 10)
+			inst[i++] = rotate_a(&tmp);
+		else if (prev->rank <= 10)
+			inst[i++] = reverse_rotate_a(&tmp);
+	}
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   all_instructions_bis.c                             :+:      :+:    :+:   */
+/*   instruction_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:29:26 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/03 13:49:59 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/07 17:03:45 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	rotate_a(t_a **pile_a)
 	last->next = first;
 	first->next = NULL;
 	*pile_a = second;
+	add_prev_to_list(pile_a);
 	return ('5');
 }
 
@@ -48,6 +49,7 @@ char	rotate_b(t_a **pile_b)
 	last->next = first;
 	first->next = NULL;
 	*pile_b = second;
+	add_prev_to_list(pile_b);
 	return ('6');
 }
 
@@ -72,6 +74,7 @@ char	reverse_rotate_a(t_a **pile_a)
 	b_last->next = NULL;
 	last->next = *pile_a;
 	*pile_a = last;
+	add_prev_to_list(pile_a);
 	return ('8');
 }
 
@@ -89,5 +92,6 @@ char	reverse_rotate_b(t_a **pile_b)
 	b_last->next = NULL;
 	last->next = *pile_b;
 	*pile_b = last;
+	add_prev_to_list(pile_b);
 	return ('9');
 }

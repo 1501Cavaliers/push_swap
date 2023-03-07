@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/04 13:56:51 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/07 16:51:03 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ void		add_prev_to_list(t_a **start);
 t_a			*atoi_to_list(char **av, int status);
 
 void		print_prev(t_a *pile);
+
+void    add_prev_list(t_a **lst);
 
 #endif

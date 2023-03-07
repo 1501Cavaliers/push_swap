@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:32:43 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/04 16:06:06 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/07 16:57:43 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ char	swap_a(t_a **pile)
 	tmp = second->next;
 	second->next = *pile;
 	(*pile)->next = tmp;
-	// second->prev = ft_lstlast_ps(*pile);
-	// (*pile)->prev = NULL;
-	// tmp->prev = *pile;
+	second->prev = ft_lstlast_ps(*pile);
+	(*pile)->prev = NULL;
+	tmp->prev = *pile;
 	*pile = second;
-	add_prev_to_list(pile);
+	
 	return ('0');
 }
 
@@ -43,6 +43,9 @@ char	swap_b(t_a **pile)
 	tmp = second->next;
 	second->next = *pile;
 	(*pile)->next = tmp;
+	second->prev = ft_lstlast_ps(*pile);
+	(*pile)->prev = NULL;
+	tmp->prev = *pile;
 	*pile = second;
 	return ('1');
 }
@@ -66,6 +69,8 @@ char	push_a(t_a **pile_a, t_a **pile_b)
 	first_b->next = *pile_a;
 	*pile_b = second_b;
 	*pile_a = first_b;
+	add_prev_to_list(pile_a);
+	add_prev_to_list(pile_b);
 	return ('3');
 }
 
@@ -81,5 +86,7 @@ char	push_b(t_a **pile_b, t_a **pile_a)
 	first_a->next = *pile_b;
 	*pile_a = second_a;
 	*pile_b = first_a;
+	add_prev_to_list(pile_a);
+	print_prev(*pile_b);
 	return ('4');
 }

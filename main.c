@@ -6,21 +6,21 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/04 16:06:23 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/07 17:13:35 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
 
-void	test_inst(t_a *pile_a, t_a *pile_b)
-{
-	(void)pile_b;
-	ft_printf("%c\n", swap_a(&pile_a));
-	// ft_printf("%c\n", push_b(&pile_b, &pile_a));
-	// ft_printf("%c\n", rotate_a(&pile_a));
-	// ft_printf("%c\n", reverse_rotate_a(&pile_a));
-}
+// void	test_inst(t_a **pile_a, t_a **pile_b)
+// {
+// 	(void)pile_b;
+// 	ft_printf("%c\n", swap_a(pile_a));
+// 	push_b(pile_b, pile_a);
+// 	rotate_a(pile_a);
+// 	reverse_rotate_a(pile_a);
+// }
 
 void	hub(t_a *pile_a)
 {
@@ -35,10 +35,16 @@ void	hub(t_a *pile_a)
 	find_rank(pile_a);
 	// pile_a = twin;
 	add_prev_to_list(&pile_a);
-	test_inst(pile_a, pile_b);
+	// test_inst(&pile_a, &pile_b);
 	// pile_a = twin;
+	ft_printf("V print next A V\n");
 	print_list(pile_a);
-	// print_prev(pile_a);
+	ft_printf("V print next B V\n");
+	print_list(pile_b);
+	ft_printf("V print prev A V\n");
+	print_prev(pile_a);
+	ft_printf("V print prev B V\n");
+	print_prev(pile_b);
 	// pile_a = twin;
 	// algo_5(&pile_a, &pile_b, inst);
 	// scan_inst(inst);

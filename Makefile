@@ -14,9 +14,9 @@ MY_SOURCES = main.c \
 	ft_lists.c \
 	rank.c \
 	instruction.c \
-	all_instructions.c \
-	all_instructions_bis.c \
-	last_instruction.c \
+	instruction_1.c \
+	instruction_2.c \
+	instruction_3.c \
 	utils_algo.c \
 	algo.c \
 
