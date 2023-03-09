@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/07 17:14:44 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/09 18:28:15 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,26 +101,57 @@ void	algo_5(t_a **pile_a, t_a **pile_b, char *inst)
 	algo_5_bis(pile_a, pile_b, inst, i);
 }
 
+void	algo_100_part2(t_a **pile_a, t_a **pile_b, char *inst, int i)
+{
+	int m_next;
+	int m_prev;
+
+	while (ft_lstsize_ps(*pile_b) > 1)
+	{
+		m_next = search_max_list_next(*pile_b);
+		m_prev = search_max_list_prev(*pile_b);
+		ft_printf("m_next : %d ; m_prev : %d\n", m_next, m_prev);
+		if (m_next <= m_prev)
+		{
+			while (m_next--)
+				inst[i++] = rotate_b(pile_b);
+			inst[i++] = push_a(pile_a, pile_b);
+		}
+		else
+		{
+			while (m_prev--)
+				inst[i++] = reverse_rotate_b(pile_b);
+			inst[i++] = push_a(pile_a, pile_b);
+		}
+	}
+	// inst[i++] = push_a(pile_a, pile_b);
+}
+
 void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
 {
-	t_a	*tmp;
-	t_a	*next;
-	t_a	*prev;
 	int i;
+	int	s_next;
+	int s_prev;
 
-	if (!pile_a || (*pile_b)->next)
-		return ;
-	tmp = *pile_a;
-	next = tmp->next;
-	prev = tmp->prev;
+
 	i = 0;
-	if (tmp->rank <= 10)
-		inst[i++] = push_b(pile_b, pile_a);
-	else if (tmp->rank > 10)
+	while (ft_lstsize_ps(*pile_a) > 1)
 	{
-		if (next->rank <= 10)
-			inst[i++] = rotate_a(&tmp);
-		else if (prev->rank <= 10)
-			inst[i++] = reverse_rotate_a(&tmp);
+		s_next = search_list_next(*pile_a, 10);
+		s_prev = search_list_prev(*pile_a, 10);
+		if (s_next <= s_prev)
+		{
+			while (s_next--)
+				inst[i++] = rotate_a(pile_a);
+			inst[i++] = push_b(pile_b, pile_a);
+		}
+		else
+		{
+			while (s_prev--)
+				inst[i++] = reverse_rotate_a(pile_a);
+			inst[i++] = push_b(pile_b, pile_a);
+		}
 	}
+	algo_100_part2(pile_a, pile_b, inst, i);
+	// inst[i++] = push_a(pile_a, pile_b);
 }

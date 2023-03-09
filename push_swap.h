@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/07 16:51:03 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/09 18:14:30 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,14 @@ t_a			*atoi_to_list(char **av, int status);
 
 void		print_prev(t_a *pile);
 
-void    add_prev_list(t_a **lst);
+void   		 add_prev_list(t_a **lst);
+
+int			search_list_next(t_a *list, int range);
+
+int			search_list_prev(t_a *list, int range);
+
+int			search_max_list_next(t_a *list);
+
+int			search_max_list_prev(t_a *list);
 
 #endif

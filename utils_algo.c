@@ -6,12 +6,46 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:16:48 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/01 14:35:04 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/09 17:47:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/includes/libft.h"
+
+int	search_list_next(t_a *list, int range)
+{
+	int c;
+
+	if (!list || !list->next)
+		return (0);
+	c = 0;
+	while (list->next)
+	{
+		if (list->rank <= range)
+			return (c);	
+		c++;
+		list = list->next;
+	}
+	return (0);
+}
+
+int	search_list_prev(t_a *list, int range)
+{
+	int c;
+
+	if (!list || !list->next)
+		return (0);
+	c = 0;
+	while (list->prev)
+	{
+		if (list->rank <= range)
+			return (c);
+		c++;
+		list = list->prev;
+	}
+	return (0);
+}
 
 int	check_list(t_a *start)
 {
