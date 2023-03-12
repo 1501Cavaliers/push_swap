@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/09 18:02:59 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/12 15:31:17 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	hub(t_a *pile_a)
 	// print_prev(pile_b);
 	// pile_a = twin;
 	// algo_5(&pile_a, &pile_b, inst);
-	scan_inst(inst);
+	// scan_inst(inst);
+	ft_printf("%d\n", ft_strlen(inst));
 }
 
 int	sub_main(int ac, char **av)

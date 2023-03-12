@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:16:48 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/09 17:47:39 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/12 15:07:53 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,42 @@
 int	search_list_next(t_a *list, int range)
 {
 	int c;
+	t_a *tmp;
 
-	if (!list || !list->next)
+	if (!list)
 		return (0);
 	c = 0;
-	while (list->next)
+	tmp = list;
+	while (tmp->next)
 	{
-		if (list->rank <= range)
+		if (tmp->rank <= range)
 			return (c);	
 		c++;
-		list = list->next;
+		tmp = tmp->next;
 	}
+	if (tmp->rank <= range)
+		return (c);
 	return (0);
 }
 
 int	search_list_prev(t_a *list, int range)
 {
 	int c;
+	t_a *tmp;
 
-	if (!list || !list->next)
+	if (!list )
 		return (0);
 	c = 0;
-	while (list->prev)
+	tmp = list;
+	while (tmp->prev)
 	{
-		if (list->rank <= range)
+		if (tmp->rank <= range)
 			return (c);
 		c++;
-		list = list->prev;
+		tmp = tmp->prev;
 	}
+	if (tmp->rank <= range)
+		return (c);
 	return (0);
 }
 

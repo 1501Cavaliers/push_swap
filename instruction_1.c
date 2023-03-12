@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:32:43 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/09 18:02:07 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/12 15:01:35 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ char	push_b(t_a **pile_b, t_a **pile_a)
 	*pile_a = second_a;
 	*pile_b = first_a;
 	add_prev_to_list(pile_a);
-	// print_prev(*pile_b);
 	return ('4');
 }

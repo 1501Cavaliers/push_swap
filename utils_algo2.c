@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:04:59 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/09 18:30:32 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/12 15:21:35 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	search_max_list_next(t_a *list)
 		c++;
 		tmp = tmp->next;
 	}
-	return (0);
+	if (tmp->rank == size)
+		return (c);
+	return (size);
 }
 
 int	search_max_list_prev(t_a *list)
@@ -53,5 +55,8 @@ int	search_max_list_prev(t_a *list)
 		c++;
 		tmp = tmp->prev;
 	}
-	return (0);
+	if (tmp->rank == size)
+		return (c);
+	return (size);
 }
+
