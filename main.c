@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/12 15:31:17 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/15 16:59:08 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,48 @@
 void	hub(t_a *pile_a)
 {
 	t_a		*pile_b;
-	t_a		*twin;
+	t_a		*copy;
 	char	*inst;
+	char	*mem;
+	int		size;
+	int		i;
 
-	pile_b = NULL;
-	twin = pile_a;
-	inst = ft_calloc(10, 1);
 	rank_0(pile_a);
 	find_rank(pile_a);
-	// pile_a = twin;
 	add_prev_to_list(&pile_a);
-	algo_100(&pile_a, &pile_b, inst);
-	ft_printf("V print next A V\n");
-	print_list(pile_a);
-	ft_printf("V print next B V\n");
-	print_list(pile_b);
-	// test_inst(&pile_a, &pile_b);
-	// pile_a = twin;
-	// ft_printf("V print prev A V\n");
-	// print_prev(pile_a);
-	// ft_printf("V print prev B V\n");
-	// print_prev(pile_b);
-	// pile_a = twin;
-	// algo_5(&pile_a, &pile_b, inst);
+	pile_b = NULL;
+	// copy = copy_list(pile_a);
+	// algo_5(&copy, &pile_b, inst);
 	// scan_inst(inst);
-	ft_printf("%d\n", ft_strlen(inst));
+	i = 10;
+	size = ft_lstsize_ps(pile_a);
+	mem = NULL;
+	while (i < size && i < 30)
+	{
+
+		inst = ft_calloc(100, 1);
+		copy = copy_list(pile_a);
+
+		sort_long_list(&copy, &pile_b, inst, i);
+		// ft_printf("ici\n");
+
+		if (!mem || ft_strlen(inst) < ft_strlen(mem))
+		{
+			if (mem)
+				free(mem);
+			mem = inst;
+		}
+		else
+			free (inst);
+
+		i++;
+		// ft_printf("number of inst : %d\n", ft_strlen(mem));
+	}
+
+	scan_inst(mem);
+	printf("MEM size = %i\n", (int)ft_strlen(mem));
+
+	// ft_printf("%d\n", ft_strlen(inst));
 }
 
 int	sub_main(int ac, char **av)
@@ -77,7 +94,7 @@ int	main(int ac, char **av)
 {
 	int	i;
 	t_a	*pile_a;
-
+printf("%i\n", ac);
 	i = 1;
 	pile_a = NULL;
 	if (ac == 1)

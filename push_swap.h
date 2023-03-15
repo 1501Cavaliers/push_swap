@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/09 18:14:30 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/15 16:27:01 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		algo_3(t_a **pile, char *inst);
 
 void		algo_5(t_a **pile_a, t_a **pile_b, char *inst);
 
-void		algo_100(t_a **pile_a, t_a **pile_b, char *inst);
+void		sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int div);
 
 void		add_prev_to_list(t_a **start);
 
@@ -117,5 +117,9 @@ int			search_list_prev(t_a *list, int range);
 int			search_max_list_next(t_a *list);
 
 int			search_max_list_prev(t_a *list);
+
+t_a			*copy_list(t_a *source);
+
+char		*clean_inst(char *inst);
 
 #endif

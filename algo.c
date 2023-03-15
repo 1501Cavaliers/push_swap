@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/12 15:36:10 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/15 16:57:28 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,10 @@ void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 	int m_next;
 	int m_prev;
 
-	print_list(*pile_b);
 	while (ft_lstsize_ps(*pile_b) > 0)
 	{
 		m_next = search_max_list_next(*pile_b);
 		m_prev = search_max_list_prev(*pile_b);
-		// ft_printf("m_next : %d ; m_prev : %d\n", m_next, m_prev);
 		if (m_next < m_prev)
 		{
 			while (m_next--)
@@ -125,29 +123,31 @@ void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 			inst[i++] = push_a(pile_a, pile_b);
 		}
 	}
-	// inst[i++] = push_a(pile_a, pile_b);
 }
 
-void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
+void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
 {
 	int i;
 	int	s_next;
 	int s_prev;
-	int range;
 
-	ft_printf("size of a :  %d\n", ft_lstsize_ps);
-	range = ft_lstsize_ps(*pile_a) / 2 + ft_lstsize_ps(*pile_a) % 2;
 	i = 0;
 	while (ft_lstsize_ps(*pile_a) > 0)
 	{
+
 		if (ft_lstsize_ps(*pile_b) >= range)
-			range += ft_lstsize_ps(*pile_a);
+		{
+			range += ft_lstsize_ps(*pile_b);
+		}
 		s_next = search_list_next(*pile_a, range);
 		s_prev = search_list_prev(*pile_a, range);
 		if (s_next < s_prev)
 		{
 			while (s_next--)
+			{
 				inst[i++] = rotate_a(pile_a);
+			}
+
 			inst[i++] = push_b(pile_b, pile_a);
 		}
 		else
@@ -157,5 +157,6 @@ void	algo_100(t_a **pile_a, t_a **pile_b, char *inst)
 			inst[i++] = push_b(pile_b, pile_a);
 		}
 	}
+
 	empty_b(pile_a, pile_b, inst, i);
 }
