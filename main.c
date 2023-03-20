@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/15 16:59:08 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/20 17:36:05 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,30 @@ void	hub(t_a *pile_a)
 	char	*inst;
 	char	*mem;
 	int		size;
-	int		i;
+	int		range;
 
 	rank_0(pile_a);
 	find_rank(pile_a);
 	add_prev_to_list(&pile_a);
+	// ft_printf("size of pile_a : %d\n", ft_lstsize_ps(pile_a));
 	pile_b = NULL;
 	// copy = copy_list(pile_a);
 	// algo_5(&copy, &pile_b, inst);
 	// scan_inst(inst);
-	i = 10;
+	range = 25;
 	size = ft_lstsize_ps(pile_a);
 	mem = NULL;
-	while (i < size && i < 30)
+	inst = NULL;
+	while (range < size && range < 60)
 	{
-
-		inst = ft_calloc(100, 1);
+		// if (inst)
+		// 	free(inst);
+		inst = create_inst(pile_a);
+		if (!inst)
+			return ;
 		copy = copy_list(pile_a);
-
-		sort_long_list(&copy, &pile_b, inst, i);
-		// ft_printf("ici\n");
-
+		sort_long_list(&copy, &pile_b, inst, range);
+		// ft_printf("%d\n", (int)ft_strlen(inst));
 		if (!mem || ft_strlen(inst) < ft_strlen(mem))
 		{
 			if (mem)
@@ -57,16 +60,13 @@ void	hub(t_a *pile_a)
 			mem = inst;
 		}
 		else
-			free (inst);
-
-		i++;
-		// ft_printf("number of inst : %d\n", ft_strlen(mem));
+			free(inst);
+		range++;
 	}
-
 	scan_inst(mem);
-	printf("MEM size = %i\n", (int)ft_strlen(mem));
-
-	// ft_printf("%d\n", ft_strlen(inst));
+	// printf("MEM size = %i\n", (int)ft_strlen(mem));
+	// print_list(copy);
+	// ft_printf("smallest : %d\n", ft_strlen(mem));
 }
 
 int	sub_main(int ac, char **av)
@@ -94,7 +94,7 @@ int	main(int ac, char **av)
 {
 	int	i;
 	t_a	*pile_a;
-printf("%i\n", ac);
+	// printf("%i\n", ac);
 	i = 1;
 	pile_a = NULL;
 	if (ac == 1)

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/15 16:57:28 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/20 17:22:42 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,35 +128,36 @@ void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
 {
 	int i;
+	int dup;
+	int	count;
 	int	s_next;
 	int s_prev;
 
 	i = 0;
+	count = 0;
+	dup = range;
 	while (ft_lstsize_ps(*pile_a) > 0)
 	{
-
-		if (ft_lstsize_ps(*pile_b) >= range)
-		{
-			range += ft_lstsize_ps(*pile_b);
-		}
+		if (range == count)
+			range += dup;
+		// if (ft_lstsize_ps(*pile_b) >= range)
+		// 	range += ft_lstsize_ps(*pile_b);
 		s_next = search_list_next(*pile_a, range);
 		s_prev = search_list_prev(*pile_a, range);
 		if (s_next < s_prev)
 		{
 			while (s_next--)
-			{
 				inst[i++] = rotate_a(pile_a);
-			}
-
 			inst[i++] = push_b(pile_b, pile_a);
+			count++;
 		}
 		else
 		{
 			while (s_prev--)
 				inst[i++] = reverse_rotate_a(pile_a);
 			inst[i++] = push_b(pile_b, pile_a);
+			count++;
 		}
 	}
-
 	empty_b(pile_a, pile_b, inst, i);
 }

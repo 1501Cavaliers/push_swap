@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/15 16:27:01 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/20 15:24:17 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_a			*ft_lstlast_ps(t_a *lst);
 
 void		print_list(t_a	*lst);
 
-void		scan_inst(char	*str);
+void		_inst(char	*str);
 
 int			check_list(t_a *start);
 
@@ -121,5 +121,11 @@ int			search_max_list_prev(t_a *list);
 t_a			*copy_list(t_a *source);
 
 char		*clean_inst(char *inst);
+
+char		*check_inst(char *inst);
+
+void		scan_inst(char	*str);
+
+char		*create_inst(t_a *pile_a);
 
 #endif
