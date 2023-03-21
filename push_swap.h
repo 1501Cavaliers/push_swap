@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/20 15:24:17 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/21 17:04:52 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,9 @@ char		*check_inst(char *inst);
 void		scan_inst(char	*str);
 
 char		*create_inst(t_a *pile_a);
+
+void		free_list(t_a *lst);
+
+int			av_is_mt(char **av);
 
 #endif

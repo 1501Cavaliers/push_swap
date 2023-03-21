@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/01 14:36:33 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/21 17:16:21 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	av_error(t_a *lst)
 	return (1);
 }
 
+int	av_is_mt(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av[1][i])
+	{
+		if (av[1][i] > '0' && av[1][i] < '9')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 t_a	*atoi_to_list(char **av, int status)
 {
 	t_a	*lst;
@@ -51,6 +65,16 @@ t_a	*atoi_to_list(char **av, int status)
 	lst = ft_lstnew_ps(ft_atoi(av[i]));
 	while (av[++i])
 		ft_lstadd_back_ps(&lst, ft_lstnew_ps(ft_atoi(av[i])));
+	i = 0;
+	if (status == 2)
+	{
+	while (av[i])
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
+	}
 	return (lst);
 }
 

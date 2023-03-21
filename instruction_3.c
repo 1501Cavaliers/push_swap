@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:30:10 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/20 15:46:51 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/03/21 15:46:07 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@ char	rra_rrb(t_a **pile_a, t_a **pile_b)
 	reverse_rotate_a(pile_a);
 	reverse_rotate_b(pile_b);
 	return ('R');
+}
+
+void	free_list(t_a *lst)
+{
+	t_a	*tmp;
+
+	if (!lst)
+		return ;
+	tmp = lst->next;
+	while (tmp)
+	{
+		free(lst);
+		lst = tmp;
+		tmp = lst->next;
+	}
+	free(lst);
 }
 
 char	*create_inst_bis(t_a *pile_a)
