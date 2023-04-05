@@ -6,12 +6,11 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:30:10 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/21 15:46:07 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:43:43 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/includes/libft.h"
 
 char	rra_rrb(t_a **pile_a, t_a **pile_b)
 {

@@ -6,12 +6,11 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:35:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/21 15:51:45 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:43:47 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/includes/libft.h"
 
 int	print_inst(char i)
 {

@@ -9,7 +9,6 @@ LIBFT_DIR = libft
 LIB = $(addprefix $(LIBFT_DIR)/, $(LIBFT))
 
 MY_SOURCES = main.c \
-	push_swap.c \
 	parsing.c \
 	ft_lists.c \
 	rank.c \

@@ -6,12 +6,36 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/21 17:17:52 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:57:08 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/includes/libft.h"
+
+void	sansnom(t_a *pile_a)
+{
+	int		size;
+	char	*inst;
+	t_a		*pile_b;
+
+	size = ft_lstsize_ps(pile_a);
+	inst = NULL;
+	pile_b = NULL;
+	if (size == 3)
+	{
+		inst = create_inst(pile_a);
+		algo_3(&pile_a, inst);
+	}
+	else if (size == 5)
+	{
+		inst = create_inst(pile_a);
+		algo_5(&pile_a, &pile_b, inst);
+	}
+	else if (size == 100)
+	{
+		
+	}
+}
 
 void	hub(t_a *pile_a)
 {
@@ -22,9 +46,9 @@ void	hub(t_a *pile_a)
 	int		size;
 	int		range;
 
-	rank_0(pile_a);
-	find_rank(pile_a);
-	add_prev_to_list(&pile_a);
+	// rank_0(pile_a);
+	// find_rank(pile_a);
+	// add_prev_to_list(&pile_a);
 	pile_b = NULL;
 	// algo_5(&copy, &pile_b, inst);
 	range = 30;
@@ -80,6 +104,9 @@ int	sub_main(int ac, char **av)
 			return (0);
 		}
 	}
+	rank_0(pile_a);
+	find_rank(pile_a);
+	add_prev_to_list(&pile_a);
 	hub(pile_a);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/03/21 17:04:52 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:59:54 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "libft/includes/libft.h"
 
 typedef struct t_list
 {
@@ -28,25 +29,7 @@ typedef struct t_list
 	struct t_list	*prev;
 }				t_a;
 
-int			check_av(char *av);
-
-int			av_error(t_a *lst);
-
-t_a			*ft_lstnew_ps(int nb);
-
 void		ft_lstadd_back_ps(struct t_list **lst, struct t_list *new);
-
-t_a			*swap_list(t_a **first);
-
-t_a			*rotate_list(t_a **first);
-
-t_a			*reverse_rotate(t_a	**start);
-
-t_a			*push_list(t_a **start_a, t_a **start_b);
-
-int			median(t_a **start);
-
-int			ft_lstsize_ps(t_a *lst);
 
 void		rank_0(t_a *tmp);
 
@@ -55,6 +38,26 @@ void		find_rank(t_a *start);
 void		allow_rank(t_a *start, int nb, int rank);
 
 void		hub_inst(char	*str);
+
+void		print_list(t_a	*lst);
+
+void		_inst(char	*str);
+
+void		algo_3(t_a **pile, char *inst);
+
+void		algo_5(t_a **pile_a, t_a **pile_b, char *inst);
+
+void		sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int div);
+
+void		add_prev_to_list(t_a **start);
+
+void		free_list(t_a *lst);
+
+void		scan_inst(char	*str);
+
+void		print_prev(t_a *pile);
+
+void   		 add_prev_list(t_a **lst);
 
 char		swap_a(t_a **pile);
 
@@ -76,39 +79,29 @@ char		reverse_rotate_a(t_a **pile_a);
 
 char		reverse_rotate_b(t_a **pile_b);
 
-t_a			*ft_lstlast_ps(t_a *lst);
-
-void		print_list(t_a	*lst);
-
-void		_inst(char	*str);
-
-int			check_list(t_a *start);
-
 char		algo_3arg(t_a **start);
-
-t_a			*ft_newlst(int nb, int rank);
-
-t_a			*ft_lstlast_ps(t_a *lst);
-
-int			reverse_check_list(t_a *start);
 
 char		reverse_algo_3arg(t_a **start);
 
 char		algo_5arg(t_a **pile_a, t_a **pile_b);
 
-void		algo_3(t_a **pile, char *inst);
+char		*clean_inst(char *inst);
 
-void		algo_5(t_a **pile_a, t_a **pile_b, char *inst);
+char		*check_inst(char *inst);
 
-void		sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int div);
+char		*create_inst(t_a *pile_a);
 
-void		add_prev_to_list(t_a **start);
+int			check_av(char *av);
 
-t_a			*atoi_to_list(char **av, int status);
+int			av_error(t_a *lst);
 
-void		print_prev(t_a *pile);
+int			median(t_a **start);
 
-void   		 add_prev_list(t_a **lst);
+int			ft_lstsize_ps(t_a *lst);
+
+int			check_list(t_a *start);
+
+int			reverse_check_list(t_a *start);
 
 int			search_list_next(t_a *list, int range);
 
@@ -118,18 +111,26 @@ int			search_max_list_next(t_a *list);
 
 int			search_max_list_prev(t_a *list);
 
-t_a			*copy_list(t_a *source);
-
-char		*clean_inst(char *inst);
-
-char		*check_inst(char *inst);
-
-void		scan_inst(char	*str);
-
-char		*create_inst(t_a *pile_a);
-
-void		free_list(t_a *lst);
-
 int			av_is_mt(char **av);
+
+t_a			*ft_lstnew_ps(int nb);
+
+t_a			*swap_list(t_a **first);
+
+t_a			*rotate_list(t_a **first);
+
+t_a			*reverse_rotate(t_a	**start);
+
+t_a			*push_list(t_a **start_a, t_a **start_b);
+
+t_a			*ft_lstlast_ps(t_a *lst);
+
+t_a			*ft_newlst(int nb, int rank);
+
+t_a			*ft_lstlast_ps(t_a *lst);
+
+t_a			*atoi_to_list(char **av, int status);
+
+t_a			*copy_list(t_a *source);
 
 #endif
