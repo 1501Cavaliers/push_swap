@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:30:01 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/05 15:43:33 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:41:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,25 @@ void	algo_3(t_a **pile, char *inst)
 	inst[i] = 0;
 }
 
-char	*reverse_algo_3(t_a **pile)
+void	reverse_algo_3(t_a **pile, char *inst, int i)
 {
 	t_a		*next;
 	t_a		*last;
-	char	*str;
-	int		i;
 
 	if (!pile || !(*pile)->next)
-		return (0);
-	str = malloc(sizeof(char) * 4);
-	i = 0;
+		return ;
 	while (!reverse_check_list(*pile))
 	{
 		next = (*pile)->next;
 		last = next->next;
 		if (last->rank == 2)
-			str[i++] = rotate_a(pile);
+			inst[i++] = rotate_a(pile);
 		else if ((*pile)->rank == 1 && next->rank == 2)
-			str[i++] = swap_a(pile);
+			inst[i++] = swap_a(pile);
 		else if ((*pile)->rank == 2 && (next->rank == 3 || next->rank == 1))
-			str[i++] = reverse_rotate_a(pile);
+			inst[i++] = reverse_rotate_a(pile);
 	}
-	str[i] = 0;
-	return (str);
+	inst[i] = 0;
 }
 
 void	algo_5_bis(t_a **pile_a, t_a **pile_b, char *inst, int i)
@@ -69,9 +64,10 @@ void	algo_5_bis(t_a **pile_a, t_a **pile_b, char *inst, int i)
 
 	tmp = *pile_a;
 	next = tmp->next;
+	ft_printf("here\n");
 	if (tmp->rank > next->rank)
-			inst[i++] = swap_a(pile_a);
-	ft_strjoin(inst, (const char *)reverse_algo_3(pile_b));
+		inst[i++] = swap_a(pile_a);
+	reverse_algo_3(pile_b, inst, i);
 	while (ft_lstsize_ps(*pile_b) > 0)
 		inst[i++] = push_a(pile_a, pile_b);
 	inst[i] = 0;
@@ -102,8 +98,8 @@ void	algo_5(t_a **pile_a, t_a **pile_b, char *inst)
 
 void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 {
-	int m_next;
-	int m_prev;
+	int	m_next;
+	int	m_prev;
 
 	while (ft_lstsize_ps(*pile_b) > 0)
 	{
@@ -126,11 +122,11 @@ void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 
 void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
 {
-	int i;
-	int dup;
+	int	i;
+	int	dup;
 	int	count;
 	int	s_next;
-	int s_prev;
+	int	s_prev;
 
 	i = 0;
 	count = 0;
@@ -139,8 +135,6 @@ void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
 	{
 		if (range == count)
 			range += dup;
-		// if (ft_lstsize_ps(*pile_b) >= range)
-		// 	range += ft_lstsize_ps(*pile_b);
 		s_next = search_list_next(*pile_a, range);
 		s_prev = search_list_prev(*pile_a, range);
 		if (s_next < s_prev)

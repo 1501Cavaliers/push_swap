@@ -6,15 +6,24 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:04:59 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/05 15:44:08 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:54:35 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	verify_pile(t_a **pile_a)
+{
+	rank_0(*pile_a);
+	find_rank(*pile_a);
+	add_prev_to_list(pile_a);
+	return (0);
+}
+
+
 char	*clean_inst(char *inst)
 {
-	int i;
+	int	i;
 
 	if (!inst)
 		return (NULL);
@@ -27,7 +36,7 @@ char	*clean_inst(char *inst)
 
 t_a	*copy_rank(t_a *source)
 {
-	t_a *copy;
+	t_a	*copy;
 
 	if (!source)
 		return (NULL);
@@ -44,7 +53,7 @@ t_a	*copy_rank(t_a *source)
 
 t_a	*copy_list(t_a *source)
 {
-	t_a *copy;
+	t_a	*copy;
 	int	size;
 
 	if (!source || !source->next)
@@ -63,9 +72,9 @@ t_a	*copy_list(t_a *source)
 
 int	search_max_list_next(t_a *list)
 {
-	int c;
-	int size;
-	t_a *tmp;
+	int	c;
+	int	size;
+	t_a	*tmp;
 
 	if (!list)
 		return (0);
@@ -74,7 +83,6 @@ int	search_max_list_next(t_a *list)
 	size = ft_lstsize_ps(list);
 	while (tmp->next)
 	{
-		// ft_printf("size : %d\n", size);
 		if (tmp->rank == size)
 			return (c);
 		c++;
@@ -87,9 +95,9 @@ int	search_max_list_next(t_a *list)
 
 int	search_max_list_prev(t_a *list)
 {
-	int c;
-	int size;
-	t_a *tmp;
+	int	c;
+	int	size;
+	t_a	*tmp;
 
 	if (!list)
 		return (0);
@@ -107,4 +115,3 @@ int	search_max_list_prev(t_a *list)
 		return (c);
 	return (size);
 }
-

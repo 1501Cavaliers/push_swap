@@ -6,30 +6,26 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/05 15:43:17 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:48:46 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	av_error(t_a *lst)
 {
 	t_a	*temp;
 
 	temp = lst;
-
 	while (ft_lstsize_ps(lst) >= 1)
 	{
 		if (lst->nb < -2147483648 || lst->nb > 2147483647)
 			return (ft_printf("Error : int overload\n"));
 		lst = lst->next;
 	}
-
 	lst = temp;
 	while (ft_lstsize_ps(lst) >= 1)
 	{
-
 		temp = lst->next;
 		while (ft_lstsize_ps(temp) >= 1)
 		{
@@ -39,7 +35,6 @@ int	av_error(t_a *lst)
 		}
 		lst = lst->next;
 	}
-
 	return (1);
 }
 
@@ -72,7 +67,6 @@ int	av_is_mt(char **av)
 {
 	int	i;
 
-
 	i = 0;
 	while (av[1][i])
 	{
@@ -97,7 +91,8 @@ t_a	*atoi_to_list(char **av, int status)
 	lst = ft_lstnew_ps(ft_atoi(av[i]));
 	while (av[++i])
 	{
-		if (ft_long_atoi(av[i]) > 2147483647 || ft_long_atoi(av[i]) < -2147483648)
+		if (ft_long_atoi(av[i]) > 2147483647
+			|| ft_long_atoi(av[i]) < -2147483648)
 		{
 			free_list(lst);
 			return (NULL);
@@ -120,7 +115,7 @@ t_a	*atoi_to_list(char **av, int status)
 int	check_av(char *av)
 {
 	int	i;
-	int c;
+	int	c;
 
 	i = 0;
 	c = 0;
@@ -137,7 +132,7 @@ int	check_av(char *av)
 		if (av[i] >= '0' && av[i] <= '9')
 			c++;
 		else
-			c = 0; 
+			c = 0;
 		if (c > 10)
 			return (0);
 	}

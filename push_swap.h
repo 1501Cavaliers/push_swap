@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/05 15:59:54 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:52:59 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		scan_inst(char	*str);
 
 void		print_prev(t_a *pile);
 
-void   		 add_prev_list(t_a **lst);
+void		add_prev_list(t_a **lst);
 
 char		swap_a(t_a **pile);
 
@@ -112,6 +112,8 @@ int			search_max_list_next(t_a *list);
 int			search_max_list_prev(t_a *list);
 
 int			av_is_mt(char **av);
+
+int		verify_pile(t_a **pile_a);
 
 t_a			*ft_lstnew_ps(int nb);
 

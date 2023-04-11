@@ -6,55 +6,38 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/05 15:57:08 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:54:48 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sansnom(t_a *pile_a)
+int	find_range(t_a *pile_a)
 {
-	int		size;
-	char	*inst;
-	t_a		*pile_b;
+	int	size;
+	int	range;
 
 	size = ft_lstsize_ps(pile_a);
-	inst = NULL;
-	pile_b = NULL;
-	if (size == 3)
-	{
-		inst = create_inst(pile_a);
-		algo_3(&pile_a, inst);
-	}
-	else if (size == 5)
-	{
-		inst = create_inst(pile_a);
-		algo_5(&pile_a, &pile_b, inst);
-	}
-	else if (size == 100)
-	{
-		
-	}
+	range = 0;
+	if (size < 50)
+		range = 0;
+	else if (size <= 100)
+		range = 10;
+	else if (size <= 250)
+		range = 20;
+	else if (range <= 550)
+		range = 30;
+	return (range);
 }
 
-void	hub(t_a *pile_a)
+void	hub(t_a *pile_a, t_a *pile_b, char *inst, int range)
 {
-	t_a		*pile_b;
 	t_a		*copy;
-	char	*inst;
 	char	*mem;
 	int		size;
-	int		range;
 
-	// rank_0(pile_a);
-	// find_rank(pile_a);
-	// add_prev_to_list(&pile_a);
-	pile_b = NULL;
-	// algo_5(&copy, &pile_b, inst);
-	range = 30;
 	size = ft_lstsize_ps(pile_a);
 	mem = NULL;
-	inst = NULL;
 	while (range < size && range < 60)
 	{
 		inst = create_inst(pile_a);
@@ -75,8 +58,34 @@ void	hub(t_a *pile_a)
 	}
 	free_list(pile_a);
 	scan_inst(mem);
-	// print_list(copy);
-	// ft_printf("smallest : %d\n", ft_strlen(mem));
+}
+
+void	sansnom(t_a *pile_a)
+{
+	int		size;
+	char	*inst;
+	t_a		*pile_b;
+
+	size = ft_lstsize_ps(pile_a);
+	inst = NULL;
+	pile_b = NULL;
+	if (size < 4)
+	{
+		inst = create_inst(pile_a);
+		algo_3(&pile_a, inst);
+		scan_inst(inst);
+	}
+	else if (size == 5)
+	{
+		inst = create_inst(pile_a);
+		algo_5(&pile_a, &pile_b, inst);
+		scan_inst(inst);
+	}
+	else if (size > 5 || size == 4)
+	{
+		inst = create_inst(pile_a);
+		hub(pile_a, pile_b, inst, find_range(pile_a));
+	}
 }
 
 int	sub_main(int ac, char **av)
@@ -104,10 +113,15 @@ int	sub_main(int ac, char **av)
 			return (0);
 		}
 	}
+	if (!check_list(pile_a))
+	{
+		free_list(pile_a);
+		return (0);
+	}
 	rank_0(pile_a);
 	find_rank(pile_a);
 	add_prev_to_list(&pile_a);
-	hub(pile_a);
+	sansnom(pile_a);
 	return (1);
 }
 
@@ -115,6 +129,7 @@ int	main(int ac, char **av)
 {
 	int	i;
 	t_a	*pile_a;
+
 	i = 1;
 	pile_a = NULL;
 	if (ac == 1)
