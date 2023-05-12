@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/11 15:54:48 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/12 18:06:16 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	find_range(t_a *pile_a)
 	size = ft_lstsize_ps(pile_a);
 	range = 0;
 	if (size < 50)
-		range = 0;
+		return (0);
 	else if (size <= 100)
-		range = 10;
+		return (10);
 	else if (size <= 250)
-		range = 20;
+		return (20);
 	else if (range <= 550)
-		range = 30;
-	return (range);
+		return (30);
+	return (-1);
 }
 
 void	hub(t_a *pile_a, t_a *pile_b, char *inst, int range)
@@ -38,6 +38,7 @@ void	hub(t_a *pile_a, t_a *pile_b, char *inst, int range)
 
 	size = ft_lstsize_ps(pile_a);
 	mem = NULL;
+	range = find_range(pile_a);
 	while (range < size && range < 60)
 	{
 		inst = create_inst(pile_a);
@@ -69,23 +70,34 @@ void	sansnom(t_a *pile_a)
 	size = ft_lstsize_ps(pile_a);
 	inst = NULL;
 	pile_b = NULL;
+	inst = create_inst(pile_a);
 	if (size < 4)
 	{
-		inst = create_inst(pile_a);
 		algo_3(&pile_a, inst);
 		scan_inst(inst);
 	}
 	else if (size == 5)
 	{
-		inst = create_inst(pile_a);
 		algo_5(&pile_a, &pile_b, inst);
 		scan_inst(inst);
 	}
 	else if (size > 5 || size == 4)
 	{
-		inst = create_inst(pile_a);
 		hub(pile_a, pile_b, inst, find_range(pile_a));
 	}
+}
+
+void	check_pile(t_a *pile_a)
+{
+	if (check_list(pile_a))
+	{
+		free_list(pile_a);
+		return ;
+	}
+	rank_0(pile_a);
+	find_rank(pile_a);
+	add_prev_to_list(&pile_a);
+	sansnom(pile_a);
 }
 
 int	sub_main(int ac, char **av)
@@ -113,15 +125,7 @@ int	sub_main(int ac, char **av)
 			return (0);
 		}
 	}
-	if (!check_list(pile_a))
-	{
-		free_list(pile_a);
-		return (0);
-	}
-	rank_0(pile_a);
-	find_rank(pile_a);
-	add_prev_to_list(&pile_a);
-	sansnom(pile_a);
+	check_pile(pile_a);
 	return (1);
 }
 

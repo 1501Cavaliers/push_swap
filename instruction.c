@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:35:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/05 15:43:47 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/12 18:08:51 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,27 @@ int	print_inst(char i)
 	return (1);
 }
 
+void	scan_inst_pt2(char	*str, int i)
+{
+	if (!str)
+		return ;
+	while (str[i])
+	{
+		if ((str[i] == '8' && str[i + 1] == '9')
+			|| (str[i] == '9' && str[i + 1] == '8'))
+		{
+			print_inst('R');
+			i += 2;
+		}
+		else
+		{
+			print_inst(str[i]);
+			i++;
+		}
+	}
+	free(str);
+}
+
 void	scan_inst(char	*str)
 {
 	int	i;
@@ -73,6 +94,57 @@ void	scan_inst(char	*str)
 			print_inst(str[i]);
 			i++;
 		}
+		// scan_inst_pt2(str, i);
 	}
 	free(str);
 }
+
+int	reverse_algo_3(t_a **pile, char *inst, int i)
+{
+	t_a		*next;
+	t_a		*last;
+
+	if (!pile || !(*pile)->next)
+		return (0);
+	while (!reverse_check_list(*pile))
+	{
+		next = (*pile)->next;
+		last = next->next;
+		if (last->rank == 2)
+			inst[i++] = rotate_b(pile);
+		else if ((*pile)->rank == 1 && next->rank == 2)
+			inst[i++] = swap_b(pile);
+		else if ((*pile)->rank == 2 && (next->rank == 3 || next->rank == 1))
+			inst[i++] = reverse_rotate_b(pile);
+	}
+	inst[i] = 0;
+	return (i);
+}
+
+void	add_prev_to_list(t_a **start)
+{
+	t_a	*tmp;
+	t_a	*prev;
+
+	if (!*start)
+		return ;
+	if (!(*start)->next)
+	{
+		(*start)->next = NULL;
+		(*start)->prev = NULL;
+		return ;
+	}
+	tmp = *start;
+	prev = tmp;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		tmp->prev = prev;
+		prev = prev->next;
+	}
+	(*start)->prev = tmp;
+	tmp = *start;
+	tmp = tmp->next;
+	tmp->prev = NULL;
+}
+

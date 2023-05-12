@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:04:59 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/11 15:54:35 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/12 15:51:27 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	verify_pile(t_a **pile_a)
 	add_prev_to_list(pile_a);
 	return (0);
 }
-
 
 char	*clean_inst(char *inst)
 {
@@ -87,29 +86,6 @@ int	search_max_list_next(t_a *list)
 			return (c);
 		c++;
 		tmp = tmp->next;
-	}
-	if (tmp->rank == size)
-		return (c);
-	return (size);
-}
-
-int	search_max_list_prev(t_a *list)
-{
-	int	c;
-	int	size;
-	t_a	*tmp;
-
-	if (!list)
-		return (0);
-	c = 0;
-	tmp = list;
-	size = ft_lstsize_ps(list);
-	while (tmp->prev)
-	{
-		if (tmp->rank == size)
-			return (c);
-		c++;
-		tmp = tmp->prev;
 	}
 	if (tmp->rank == size)
 		return (c);

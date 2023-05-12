@@ -6,13 +6,42 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:32:43 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/11 15:37:54 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/12 17:37:51 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 char	swap_a(t_a **pile)
+{
+	t_a	*second;
+	t_a	*tmp;
+
+	if (!pile || !(*pile)->next)
+		return (0);
+	if (ft_lstsize_ps(*pile) >= 3)
+	{
+		second = (*pile)->next;
+		tmp = second->next;
+		second->next = *pile;
+		(*pile)->next = tmp;
+		second->prev = ft_lstlast_ps(*pile);
+		(*pile)->prev = NULL;
+		tmp->prev = *pile;
+		*pile = second;
+	}
+	else
+	{
+		second = (*pile)->next;
+		second->next = *pile;
+		(*pile)->next = NULL;
+		(*pile)->prev = second;
+		*pile = second;
+	}
+	return ('0');
+}
+
+char	swap_b(t_a **pile)
 {
 	t_a	*tmp;
 	t_a	*second;
@@ -35,27 +64,9 @@ char	swap_a(t_a **pile)
 		tmp = (*pile)->next;
 		tmp->next = *pile;
 		(*pile)->next = NULL;
-		(*pile)->prev = NULL;
+		(*pile)->prev = tmp;
 		tmp->prev = *pile;
 	}
-	return ('0');
-}
-
-char	swap_b(t_a **pile)
-{
-	t_a	*tmp;
-	t_a	*second;
-
-	if (!pile || !(*pile)->next)
-		return (0);
-	second = (*pile)->next;
-	tmp = second->next;
-	second->next = *pile;
-	(*pile)->next = tmp;
-	second->prev = ft_lstlast_ps(*pile);
-	(*pile)->prev = NULL;
-	tmp->prev = *pile;
-	*pile = second;
 	return ('1');
 }
 

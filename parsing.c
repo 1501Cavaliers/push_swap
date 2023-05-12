@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/04/11 15:48:46 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/12 17:58:05 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,23 @@ int	av_is_mt(char **av)
 	return (0);
 }
 
+
+void	clean_atoi(char **av, int status)
+{
+	int i;
+
+	i = 0;
+	if (status == 2)
+	{
+		while (av[i])
+		{
+			free(av[i]);
+			i++;
+		}
+		free(av);
+	}
+}
+
 t_a	*atoi_to_list(char **av, int status)
 {
 	t_a	*lst;
@@ -99,16 +116,17 @@ t_a	*atoi_to_list(char **av, int status)
 		}
 		ft_lstadd_back_ps(&lst, ft_lstnew_ps(ft_atoi(av[i])));
 	}
-	i = 0;
-	if (status == 2)
-	{
-		while (av[i])
-		{
-			free(av[i]);
-			i++;
-		}
-		free(av);
-	}
+	clean_atoi(av, status);
+	// i = 0;
+	// if (status == 2)
+	// {
+	// 	while (av[i])
+	// 	{
+	// 		free(av[i]);
+	// 		i++;
+	// 	}
+	// 	free(av);
+	// }
 	return (lst);
 }
 
