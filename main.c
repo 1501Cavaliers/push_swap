@@ -6,40 +6,20 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 18:06:16 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/21 15:04:39 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_range(t_a *pile_a)
-{
-	int	size;
-	int	range;
-
-	size = ft_lstsize_ps(pile_a);
-	range = 0;
-	if (size < 50)
-		return (0);
-	else if (size <= 100)
-		return (10);
-	else if (size <= 250)
-		return (20);
-	else if (range <= 550)
-		return (30);
-	return (-1);
-}
-
 void	hub(t_a *pile_a, t_a *pile_b, char *inst, int range)
 {
 	t_a		*copy;
 	char	*mem;
-	int		size;
 
-	size = ft_lstsize_ps(pile_a);
 	mem = NULL;
 	range = find_range(pile_a);
-	while (range < size && range < 60)
+	while (range < ft_lstsize_ps(pile_a) && range < 60)
 	{
 		inst = create_inst(pile_a);
 		if (!inst)
@@ -48,8 +28,7 @@ void	hub(t_a *pile_a, t_a *pile_b, char *inst, int range)
 		sort_long_list(&copy, &pile_b, inst, range);
 		if (!mem || ft_strlen(inst) < ft_strlen(mem))
 		{
-			if (mem)
-				free(mem);
+			free(mem);
 			mem = inst;
 		}
 		else
@@ -109,10 +88,7 @@ int	sub_main(int ac, char **av)
 	{
 		pile_a = atoi_to_list(av, 1);
 		if (av_error(pile_a) != 1)
-		{
-			free_list(pile_a);
-			return (0);
-		}
+			return (free_return_zero(pile_a));
 	}
 	if (ac == 2)
 	{
@@ -120,10 +96,7 @@ int	sub_main(int ac, char **av)
 			return (0);
 		pile_a = atoi_to_list(ft_split(av[1], ' '), 2);
 		if (av_error(pile_a) != 1)
-		{
-			free_list(pile_a);
-			return (0);
-		}
+			return (free_return_zero(pile_a));
 	}
 	check_pile(pile_a);
 	return (1);
@@ -132,10 +105,8 @@ int	sub_main(int ac, char **av)
 int	main(int ac, char **av)
 {
 	int	i;
-	t_a	*pile_a;
 
 	i = 1;
-	pile_a = NULL;
 	if (ac == 1)
 		return (ft_printf("Error, no arg\n"));
 	if (ac > 1)

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 17:54:25 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/21 15:05:42 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "libft/includes/libft.h"
+# include "libft/libft.h"
 
 typedef struct t_list
 {
@@ -28,6 +28,16 @@ typedef struct t_list
 	struct t_list	*next;
 	struct t_list	*prev;
 }				t_a;
+
+typedef struct t_param
+{
+	int	i;
+	int	range;
+	int	dup;
+	int	count;
+	int	s_next;
+	int	s_prev;
+}				t_p;
 
 void		ft_lstadd_back_ps(struct t_list **lst, struct t_list *new);
 
@@ -99,6 +109,10 @@ int			check_av(char *av);
 
 int			av_error(t_a *lst);
 
+int			find_range(t_a *pile_a);
+
+int			av_is_mt(char **av);
+
 int			median(t_a **start);
 
 int			ft_lstsize_ps(t_a *lst);
@@ -118,6 +132,8 @@ int			search_max_list_prev(t_a *list);
 int			av_is_mt(char **av);
 
 int			verify_pile(t_a **pile_a);
+
+int			free_return_zero(t_a *lst);
 
 t_a			*ft_lstnew_ps(int nb);
 

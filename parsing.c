@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:31:40 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 17:58:05 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/21 15:05:27 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	av_error(t_a *lst)
 	temp = lst;
 	while (ft_lstsize_ps(lst) >= 1)
 	{
-		if (lst->nb < -2147483648 || lst->nb > 2147483647)
+		if (lst->nb <= -2147483648 || lst->nb > 2147483647)
 			return (ft_printf("Error : int overload\n"));
 		lst = lst->next;
 	}
@@ -63,24 +63,9 @@ long int	ft_long_atoi(const char *nptr)
 	return (nb * sign);
 }
 
-int	av_is_mt(char **av)
-{
-	int	i;
-
-	i = 0;
-	while (av[1][i])
-	{
-		if (av[1][i] > '0' && av[1][i] < '9')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-
 void	clean_atoi(char **av, int status)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (status == 2)
@@ -117,16 +102,6 @@ t_a	*atoi_to_list(char **av, int status)
 		ft_lstadd_back_ps(&lst, ft_lstnew_ps(ft_atoi(av[i])));
 	}
 	clean_atoi(av, status);
-	// i = 0;
-	// if (status == 2)
-	// {
-	// 	while (av[i])
-	// 	{
-	// 		free(av[i]);
-	// 		i++;
-	// 	}
-	// 	free(av);
-	// }
 	return (lst);
 }
 

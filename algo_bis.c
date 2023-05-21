@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:48:09 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 17:55:02 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/21 14:56:47 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,39 +36,43 @@ void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 	}
 }
 
-void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
+void	sort_long_list_2(t_a **pile_a, t_a **pile_b, char *inst, param *params)
 {
-	int	i;
-	int	dup;
-	int	count;
-	int	s_next;
-	int	s_prev;
-
-	i = 0;
-	count = 0;
-	dup = range;
 	while (ft_lstsize_ps(*pile_a) > 0)
 	{
-		if (range == count)
-			range += dup;
-		s_next = search_list_next(*pile_a, range);
-		s_prev = search_list_prev(*pile_a, range);
-		if (s_next < s_prev)
+		if (params->range == params->count)
+			params->range += params->dup;
+		params->s_next = search_list_next(*pile_a, params->range);
+		params->s_prev = search_list_prev(*pile_a, params->range);
+		if (params->s_next < params->s_prev)
 		{
-			while (s_next--)
-				inst[i++] = rotate_a(pile_a);
-			inst[i++] = push_b(pile_b, pile_a);
-			count++;
+			while (params->s_next--)
+				inst[params->i++] = rotate_a(pile_a);
+			inst[params->i++] = push_b(pile_b, pile_a);
+			params->count++;
 		}
 		else
 		{
-			while (s_prev--)
-				inst[i++] = reverse_rotate_a(pile_a);
-			inst[i++] = push_b(pile_b, pile_a);
-			count++;
+			while (params->s_prev--)
+				inst[params->i++] = reverse_rotate_a(pile_a);
+			inst[params->i++] = push_b(pile_b, pile_a);
+			params->count++;
 		}
 	}
-	empty_b(pile_a, pile_b, inst, i);
+	empty_b(pile_a, pile_b, inst, params->i);
+}
+
+void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
+{
+	param	params;
+
+	params.i = 0;
+	params.dup = range;
+	params.range = range;
+	params.count = 0;
+	params.s_next = 0;
+	params.s_prev = 0;
+	sort_long_list_2(pile_a, pile_b, inst, &params);
 }
 
 int	search_max_list_prev(t_a *list)

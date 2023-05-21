@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruction.c                                      :+:      :+:    :+:   */
+/*   instruction_4.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 12:35:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 18:08:51 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/21 14:58:47 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,10 @@ int	print_inst(char i)
 	return (1);
 }
 
-void	scan_inst_pt2(char	*str, int i)
+int	printtruc(int i, int plus, char q)
 {
-	if (!str)
-		return ;
-	while (str[i])
-	{
-		if ((str[i] == '8' && str[i + 1] == '9')
-			|| (str[i] == '9' && str[i + 1] == '8'))
-		{
-			print_inst('R');
-			i += 2;
-		}
-		else
-		{
-			print_inst(str[i]);
-			i++;
-		}
-	}
-	free(str);
+	print_inst(q);
+	return (i + plus);
 }
 
 void	scan_inst(char	*str)
@@ -73,28 +58,15 @@ void	scan_inst(char	*str)
 	{
 		if ((str[i] == '0' && str[i + 1] == '1')
 			|| (str[i] == '1' && str[i + 1] == '0'))
-		{
-			print_inst('2');
-			i += 2;
-		}
+			i = printtruc(i, 2, '2');
 		else if ((str[i] == '5' && str[i + 1] == '6')
 			|| (str[i] == '6' && str[i + 1] == '5'))
-		{
-			print_inst('7');
-			i += 2;
-		}
+			i = printtruc(i, 2, '7');
 		else if ((str[i] == '8' && str[i + 1] == '9')
 			|| (str[i] == '9' && str[i + 1] == '8'))
-		{
-			print_inst('R');
-			i += 2;
-		}
+			i = printtruc(i, 2, 'R');
 		else
-		{
-			print_inst(str[i]);
-			i++;
-		}
-		// scan_inst_pt2(str, i);
+			i = printtruc(i, 1, str[i]);
 	}
 	free(str);
 }
@@ -147,4 +119,3 @@ void	add_prev_to_list(t_a **start)
 	tmp = tmp->next;
 	tmp->prev = NULL;
 }
-
