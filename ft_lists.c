@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:24:19 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 16:43:29 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:31:57 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_a	*ft_lstnew_ps(int nb)
 	if (!new)
 		return (NULL);
 	new->nb = nb;
+	new->rank = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

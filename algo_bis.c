@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:48:09 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/21 14:56:47 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/21 15:11:25 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	empty_b(t_a **pile_a, t_a **pile_b, char *inst, int i)
 	}
 }
 
-void	sort_long_list_2(t_a **pile_a, t_a **pile_b, char *inst, param *params)
+void	sort_long_list_2(t_a **pile_a, t_a **pile_b, char *inst, t_p *params)
 {
 	while (ft_lstsize_ps(*pile_a) > 0)
 	{
@@ -64,7 +64,7 @@ void	sort_long_list_2(t_a **pile_a, t_a **pile_b, char *inst, param *params)
 
 void	sort_long_list(t_a **pile_a, t_a **pile_b, char *inst, int range)
 {
-	param	params;
+	t_p	params;
 
 	params.i = 0;
 	params.dup = range;

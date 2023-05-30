@@ -20,7 +20,8 @@ MY_SOURCES = main.c \
 	utils_algo2.c \
 	algo.c \
 	algo_bis.c \
-	instruction_5.c 
+	instruction_5.c \
+	others.c 
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

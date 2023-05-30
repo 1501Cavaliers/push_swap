@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:21:56 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/21 15:04:39 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:54:55 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	hub(t_a *pile_a, t_a *pile_b, char *inst, int range)
 	scan_inst(mem);
 }
 
-void	sansnom(t_a *pile_a)
+void	define_size(t_a *pile_a)
 {
 	int		size;
 	char	*inst;
@@ -49,7 +49,8 @@ void	sansnom(t_a *pile_a)
 	size = ft_lstsize_ps(pile_a);
 	inst = NULL;
 	pile_b = NULL;
-	inst = create_inst(pile_a);
+	if (size < 4 || size == 5)
+		inst = create_inst(pile_a);
 	if (size < 4)
 	{
 		algo_3(&pile_a, inst);
@@ -76,7 +77,9 @@ void	check_pile(t_a *pile_a)
 	rank_0(pile_a);
 	find_rank(pile_a);
 	add_prev_to_list(&pile_a);
-	sansnom(pile_a);
+	if (ft_lstsize_ps(pile_a) == 2)
+		return (list_of_two(pile_a));
+	define_size(pile_a);
 }
 
 int	sub_main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:37:42 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/21 15:05:42 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:57:36 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ void		find_rank(t_a *start);
 
 void		allow_rank(t_a *start, int nb, int rank);
 
-void		hub_inst(char	*str);
-
 void		print_list(t_a	*lst);
-
-void		_inst(char	*str);
 
 void		algo_3(t_a **pile, char *inst);
 
@@ -67,9 +63,9 @@ void		scan_inst(char	*str);
 
 void		print_prev(t_a *pile);
 
-void		add_prev_list(t_a **lst);
-
 void		scan_inst_pt2(char	*str, int i);
+
+void		list_of_two(t_a *pile_a);
 
 char		swap_a(t_a **pile);
 
@@ -91,12 +87,6 @@ char		reverse_rotate_a(t_a **pile_a);
 
 char		reverse_rotate_b(t_a **pile_b);
 
-char		algo_3arg(t_a **start);
-
-char		reverse_algo_3arg(t_a **start);
-
-char		algo_5arg(t_a **pile_a, t_a **pile_b);
-
 char		*clean_inst(char *inst);
 
 char		*check_inst(char *inst);
@@ -112,8 +102,6 @@ int			av_error(t_a *lst);
 int			find_range(t_a *pile_a);
 
 int			av_is_mt(char **av);
-
-int			median(t_a **start);
 
 int			ft_lstsize_ps(t_a *lst);
 

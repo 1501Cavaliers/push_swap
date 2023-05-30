@@ -6,7 +6,7 @@
 /*   By: fserpe <fserpe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:30:10 by fserpe            #+#    #+#             */
-/*   Updated: 2023/05/12 18:02:16 by fserpe           ###   ########.fr       */
+/*   Updated: 2023/05/30 11:39:47 by fserpe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*create_inst(t_a *pile_a)
 	inst = NULL;
 	if (ft_lstsize_ps(pile_a) <= 10)
 	{
-		inst = ft_calloc(30, 1);
+		inst = ft_calloc(50, 1);
 		return (inst);
 	}
 	else if (ft_lstsize_ps(pile_a) <= 50 && ft_lstsize_ps(pile_a) > 10)
